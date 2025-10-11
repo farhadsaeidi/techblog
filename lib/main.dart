@@ -27,54 +27,58 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'IRANSANS',
         textTheme: TextTheme(
-          displayLarge: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w500,
-            color: Colors.black,
+          headlineSmall: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w300,
+            color: SolidColors.bannerSubTitle,
+          ),
+          headlineMedium: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+            color: SolidColors.bannerTitle,
           ),
           headlineLarge: TextStyle(
             fontFamily: 'DANA',
-            fontSize: 17,
-            fontWeight: FontWeight.w700,
+            fontSize: 18,
+            fontWeight: FontWeight.w800,
             color: Colors.black,
           ),
-          headlineMedium: TextStyle(
-            fontFamily: 'DANA',
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
-            color: Colors.black,
-          ),
-          titleLarge: TextStyle(
-            fontFamily: 'DANA',
+          displaySmall: TextStyle(
             fontSize: 14,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w400,
             color: Colors.white,
           ),
-          titleMedium: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w500,
-            color: Colors.green,
-          ),
-          bodyLarge: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w400,
-            color: Colors.black,
-          ),
-          bodyMedium: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w300,
-            color: Colors.black87,
-          ),
-          labelSmall: TextStyle(
-            fontSize: 11,
-            fontWeight: FontWeight.w200,
-            color: Colors.grey[700],
-          ),
-          labelLarge: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w500,
-            color: Colors.red,
-          ),
+          // titleLarge: TextStyle(
+          //   fontFamily: 'DANA',
+          //   fontSize: 14,
+          //   fontWeight: FontWeight.w600,
+          //   color: Colors.white,
+          // ),
+          // titleMedium: TextStyle(
+          //   fontSize: 13,
+          //   fontWeight: FontWeight.w500,
+          //   color: Colors.green,
+          // ),
+          // bodyLarge: TextStyle(
+          //   fontSize: 13,
+          //   fontWeight: FontWeight.w400,
+          //   color: Colors.black,
+          // ),
+          // bodyMedium: TextStyle(
+          //   fontSize: 12,
+          //   fontWeight: FontWeight.w300,
+          //   color: Colors.black87,
+          // ),
+          // labelSmall: TextStyle(
+          //   fontSize: 11,
+          //   fontWeight: FontWeight.w200,
+          //   color: Colors.grey[700],
+          // ),
+          // labelLarge: TextStyle(
+          //   fontSize: 13,
+          //   fontWeight: FontWeight.w500,
+          //   color: Colors.red,
+          // ),
         ),
       ),
       // تنظیمات راست چین کردن پروژه

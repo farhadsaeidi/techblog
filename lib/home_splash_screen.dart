@@ -31,22 +31,14 @@ class _HomeSplashScreenState extends State<HomeSplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image(
-                image: Assets.images.logo.provider(),
-                height: 120
-              ),
-              SpinKitFadingCircle(
-                color: SolidColors.primaryColor,
-                size: 70.0
-              ),
-            ],
-          ),
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image(image: Assets.images.logo.provider(), height: 120),
+            SpinKitFadingCircle(color: SolidColors.primaryColor, size: 70.0),
+          ],
         ),
       ),
     );
