@@ -48,16 +48,21 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.w400,
             color: Colors.white,
           ),
+          // titleSmall: TextStyle(
+          //   fontSize: 12,
+          //   fontWeight: FontWeight.w500,
+          //   color: SolidColors.colorTitle,
+          // ),
+          titleMedium: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
+            color: SolidColors.colorTitle,
+          ),
           // titleLarge: TextStyle(
           //   fontFamily: 'DANA',
           //   fontSize: 14,
           //   fontWeight: FontWeight.w600,
           //   color: Colors.white,
-          // ),
-          // titleMedium: TextStyle(
-          //   fontSize: 13,
-          //   fontWeight: FontWeight.w500,
-          //   color: Colors.green,
           // ),
           // bodyLarge: TextStyle(
           //   fontSize: 13,
@@ -74,6 +79,11 @@ class MyApp extends StatelessWidget {
           //   fontWeight: FontWeight.w200,
           //   color: Colors.grey[700],
           // ),
+          labelMedium: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: Colors.black,
+          ),
           // labelLarge: TextStyle(
           //   fontSize: 13,
           //   fontWeight: FontWeight.w500,

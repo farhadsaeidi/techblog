@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tech_blog/colors.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/model/fake_data.dart';
+import 'package:tech_blog/strings.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,6 +13,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     var textTheme = Theme.of(context).textTheme;
+    int hottestPostsNumber = hottestPostsList.getRange(0, 5).length;
 
     return Scaffold(
       body: SafeArea(
@@ -70,6 +72,7 @@ class HomePage extends StatelessWidget {
                     right: 0,
                     child: Column(
                       children: [
+                        // متن بالایی
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 45),
                           child: Row(
@@ -93,15 +96,16 @@ class HomePage extends StatelessWidget {
                                   SizedBox(width: 5),
                                   Icon(
                                     Icons.remove_red_eye_sharp,
-                                    color: SolidColors.bannerSubTitle, 
-                                    size: 17,       
+                                    color: SolidColors.bannerSubTitle,
+                                    size: 17,
                                   ),
                                 ],
-                              )
+                              ),
                             ],
                           ),
                         ),
                         SizedBox(height: 10),
+                        // متن پایینی
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 45),
                           child: Text(
@@ -128,9 +132,41 @@ class HomePage extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: ((context, index) {
                     return hashTagItem(index, textTheme);
-                  })
+                  }),
                 ),
-              )
+              ),
+              SizedBox(height: 32),
+              // عنوان مشاهده داغ ترین نوشته ها
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 20, 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    ImageIcon(
+                      Assets.icons.bluePen.provider(),
+                      color: SolidColors.colorTitle,
+                    ),
+                    SizedBox(width: 8),
+                    Text(
+                      Strings.viewHottestPosts,
+                      style: textTheme.titleMedium,
+                    ),
+                  ],
+                ),
+              ),
+              // عکس، کاور، متن روی عکس و متن زیر عکس مشاهده داغ ترین نوشته ها
+              Container(
+                height: screenSize.height / 4.1,
+                margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                child: ListView.builder(
+                  itemCount: hottestPostsNumber,
+                  physics: BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: ((context, index) {
+                    return hottestPostsItem(index, textTheme, screenSize, hottestPostsNumber);
+                  }),
+                ),
+              ),
             ],
           ),
         ),
@@ -138,13 +174,13 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Padding hashTagItem(int index, TextTheme textTheme) {
+  hashTagItem(index, textTheme) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         index == hashTagList.length - 1 ? 0 : 8,
         0,
         index == 0 ? 0 : 8,
-        0
+        0,
       ),
       child: Container(
         height: 40,
@@ -170,6 +206,94 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  hottestPostsItem(index, textTheme, screenSize, hottestPostsNumber) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(
+        index == hottestPostsNumber - 1 ? 0 : 12,
+        0,
+        index == 0 ? 0 : 12,
+        0,
+      ),
+      child: Column(
+        children: [
+          // عکس، کاور و متن روی عکس
+          SizedBox(
+            width: screenSize.width / 2,
+            height: screenSize.height / 5.4,
+            child: Stack(
+              children: [
+                // عکس و کاور روی عکس
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(16)),
+                    image: DecorationImage(
+                      image: NetworkImage(hottestPostsList[index].imageUrl),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  // کاور روی عکس
+                  foregroundDecoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(16)),
+                    gradient: LinearGradient(
+                      colors: GradiantColors.homeHottestPostsCover,
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                    ),
+                  ),
+                ),
+                // متن روی عکس
+                Positioned(
+                  bottom: 15,
+                  left: 0,
+                  right: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          hottestPostsList[index].writer,
+                          style: textTheme.headlineSmall,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              hottestPostsList[index].view,
+                              style: textTheme.headlineSmall,
+                            ),
+                            SizedBox(width: 5),
+                            Icon(
+                              Icons.remove_red_eye_sharp,
+                              color: SolidColors.bannerSubTitle,
+                              size: 17,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 6),
+          // متن زیر عکس
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 8),
+            width: screenSize.width / 2,
+            child: Text(
+              hottestPostsList[index].title,
+              style: textTheme.labelMedium,
+              textAlign: TextAlign.justify,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          )
+        ],
       ),
     );
   }

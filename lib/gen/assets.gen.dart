@@ -88,6 +88,12 @@ class $AssetsImagesGen {
   AssetGenImage get emptyState =>
       const AssetGenImage('assets/images/empty_state.png');
 
+  /// File path: assets/images/hot1.png
+  AssetGenImage get hot1 => const AssetGenImage('assets/images/hot1.png');
+
+  /// File path: assets/images/hot2.png
+  AssetGenImage get hot2 => const AssetGenImage('assets/images/hot2.png');
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
@@ -117,6 +123,8 @@ class $AssetsImagesGen {
     admin1,
     admin2,
     emptyState,
+    hot1,
+    hot2,
     logo,
     posterTest,
     profileAvatar,
