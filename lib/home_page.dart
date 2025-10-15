@@ -123,9 +123,8 @@ class HomePage extends StatelessWidget {
               ),
               SizedBox(height: 16),
               // لیست هشتگ ها
-              Container(
+              SizedBox(
                 height: 40,
-                margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: ListView.builder(
                   itemCount: hashTagList.length,
                   physics: BouncingScrollPhysics(),
@@ -155,9 +154,8 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               // عکس، کاور، متن روی عکس و متن زیر عکس مشاهده داغ ترین نوشته ها
-              Container(
+              SizedBox(
                 height: screenSize.height / 4.1,
-                margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: ListView.builder(
                   itemCount: hottestPostsNumber,
                   physics: BouncingScrollPhysics(),
@@ -177,9 +175,9 @@ class HomePage extends StatelessWidget {
   hashTagItem(index, textTheme) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
-        index == hashTagList.length - 1 ? 0 : 8,
+        index == hashTagList.length - 1 ? 20 : 8,
         0,
-        index == 0 ? 0 : 8,
+        index == 0 ? 20 : 8,
         0,
       ),
       child: Container(
@@ -213,9 +211,9 @@ class HomePage extends StatelessWidget {
   hottestPostsItem(index, textTheme, screenSize, hottestPostsNumber) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
-        index == hottestPostsNumber - 1 ? 0 : 12,
+        index == hottestPostsNumber - 1 ? 20 : 12,
         0,
-        index == 0 ? 0 : 12,
+        index == 0 ? 20 : 12,
         0,
       ),
       child: Column(
@@ -283,7 +281,7 @@ class HomePage extends StatelessWidget {
           SizedBox(height: 6),
           // متن زیر عکس
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 8),
+            padding: EdgeInsets.symmetric(horizontal: 6),
             width: screenSize.width / 2,
             child: Text(
               hottestPostsList[index].title,
