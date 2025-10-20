@@ -25,3 +25,21 @@ class BlogModel {
     required this.view,
   });
 }
+
+class HottestPostsStaticImages {
+  String imagePath;
+
+  HottestPostsStaticImages({required this.imagePath});
+}
+
+class HottestPodcasts {
+  int id;
+  String title;
+  String imagePath;
+
+  HottestPodcasts({
+    required this.id,
+    required this.title,
+    required this.imagePath, 
+  });
+}

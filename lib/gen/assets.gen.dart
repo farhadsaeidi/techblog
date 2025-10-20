@@ -84,6 +84,24 @@ class $AssetsImagesGen {
   /// File path: assets/images/admin2.png
   AssetGenImage get admin2 => const AssetGenImage('assets/images/admin2.png');
 
+  /// File path: assets/images/adsense.jpg
+  AssetGenImage get adsense => const AssetGenImage('assets/images/adsense.jpg');
+
+  /// File path: assets/images/apple.jpg
+  AssetGenImage get apple => const AssetGenImage('assets/images/apple.jpg');
+
+  /// File path: assets/images/butterfly.jpg
+  AssetGenImage get butterfly =>
+      const AssetGenImage('assets/images/butterfly.jpg');
+
+  /// File path: assets/images/christmas.jpg
+  AssetGenImage get christmas =>
+      const AssetGenImage('assets/images/christmas.jpg');
+
+  /// File path: assets/images/colorful.jpg
+  AssetGenImage get colorful =>
+      const AssetGenImage('assets/images/colorful.jpg');
+
   /// File path: assets/images/empty_state.png
   AssetGenImage get emptyState =>
       const AssetGenImage('assets/images/empty_state.png');
@@ -97,6 +115,19 @@ class $AssetsImagesGen {
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
+  /// File path: assets/images/mars.jpg
+  AssetGenImage get mars => const AssetGenImage('assets/images/mars.jpg');
+
+  /// File path: assets/images/mask.jpg
+  AssetGenImage get mask => const AssetGenImage('assets/images/mask.jpg');
+
+  /// File path: assets/images/microphone.jpg
+  AssetGenImage get microphone =>
+      const AssetGenImage('assets/images/microphone.jpg');
+
+  /// File path: assets/images/office.jpg
+  AssetGenImage get office => const AssetGenImage('assets/images/office.jpg');
+
   /// File path: assets/images/poster_test.png
   AssetGenImage get posterTest =>
       const AssetGenImage('assets/images/poster_test.png');
@@ -108,6 +139,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/single_place_holder.jpg
   AssetGenImage get singlePlaceHolder =>
       const AssetGenImage('assets/images/single_place_holder.jpg');
+
+  /// File path: assets/images/speaker.jpg
+  AssetGenImage get speaker => const AssetGenImage('assets/images/speaker.jpg');
 
   /// File path: assets/images/tcbot.svg
   String get tcbot => 'assets/images/tcbot.svg';
@@ -122,13 +156,23 @@ class $AssetsImagesGen {
   List<dynamic> get values => [
     admin1,
     admin2,
+    adsense,
+    apple,
+    butterfly,
+    christmas,
+    colorful,
     emptyState,
     hot1,
     hot2,
     logo,
+    mars,
+    mask,
+    microphone,
+    office,
     posterTest,
     profileAvatar,
     singlePlaceHolder,
+    speaker,
     tcbot,
     user,
     user1,

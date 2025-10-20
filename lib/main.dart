@@ -38,8 +38,7 @@ class MyApp extends StatelessWidget {
             color: SolidColors.bannerTitle,
           ),
           headlineLarge: TextStyle(
-            fontFamily: 'DANA',
-            fontSize: 18,
+            fontSize: 17,
             fontWeight: FontWeight.w800,
             color: Colors.black,
           ),
