@@ -17,9 +17,13 @@ class SolidColors {
 }
 
 class GradiantColors {
-  static const List<Color> bottomNav = [
+  static const List<Color> footer = [
     Color.fromARGB(255, 25, 0, 94),
     Color.fromARGB(255, 68, 4, 87)
+  ];
+  static const List<Color> footerBackground = [
+    Color.fromARGB(0, 255, 255, 255),
+    Color.fromARGB(255, 255, 255, 255)
   ];
   static const List<Color> tags = [
     Color.fromARGB(255, 0, 0, 0),

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tech_blog/colors.dart';
-// import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/home_splash_screen.dart';
+import 'package:tech_blog/view/home_splash_screen.dart';
 
 void main() {
   // تغییر رنگ استاتوس و نویگیشن بار
