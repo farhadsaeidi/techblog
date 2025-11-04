@@ -1,4 +1,5 @@
-import 'dart:ui';
+// import 'dart:ui';
+import 'package:flutter/material.dart';
 
 class SolidColors {
   static const Color primaryColor = Color.fromARGB(255, 68, 4, 87); 
@@ -21,10 +22,24 @@ class GradiantColors {
     Color.fromARGB(255, 25, 0, 94),
     Color.fromARGB(255, 68, 4, 87)
   ];
-  static const List<Color> footerBackground = [
-    Color.fromARGB(0, 255, 255, 255),
-    Color.fromARGB(255, 255, 255, 255)
-  ];
+  // static const List<Color> footerBackground = [
+  //   Color.fromARGB(0, 255, 255, 255),
+  //   Color.fromARGB(255, 255, 255, 255)
+  // ];
+  static const footerBackground = LinearGradient(
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter,
+    colors: [
+      Color.fromRGBO(255, 255, 255, 1.0), // 0%
+      Color.fromRGBO(255, 255, 255, 1.0), // 45%
+      Color.fromRGBO(255, 255, 255, 0.8), // 55%
+      Color.fromRGBO(255, 255, 255, 0.6), // 70%
+      Color.fromRGBO(255, 255, 255, 0.4), // 80%
+      Color.fromRGBO(255, 255, 255, 0.2), // 95%
+      Color.fromRGBO(255, 255, 255, 0.0), // 100%
+    ],
+    stops: [0.0, 0.45, 0.55, 0.70, 0.80, 0.95, 1.0]
+  );
   static const List<Color> tags = [
     Color.fromARGB(255, 0, 0, 0),
     Color.fromARGB(255, 63, 63, 63)

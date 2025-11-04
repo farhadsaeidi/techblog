@@ -8,18 +8,19 @@ footer(Size screenSize) {
     left: 0,
     bottom: 0,
     child: Container(
-      height: screenSize.height / 9,
+      height: screenSize.height / 8,
       // کانتینر ترنسپرنت فوتر به صورت هاله
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: GradiantColors.footerBackground,
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      ),
+      // decoration: BoxDecoration(
+      //   gradient: LinearGradient(
+      //     colors: GradiantColors.footerBackground,
+      //     begin: Alignment.topCenter,
+      //     end: Alignment.bottomCenter,
+      //   ),
+      // ),
+      decoration: BoxDecoration(gradient: GradiantColors.footerBackground),
       // محتوای فوتر
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(35, 15, 35, 20),
+        padding: const EdgeInsets.fromLTRB(35, 15, 35, 35),
         child: Container(
           height: screenSize.height / 8,
           // بک گراند فوتر
