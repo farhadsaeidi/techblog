@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tech_blog/colors.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/view/home_page.dart';
+import 'package:tech_blog/view/home_main.dart';
 
 class HomeSplashScreen extends StatefulWidget {
   const HomeSplashScreen({super.key});
@@ -23,7 +23,7 @@ class _HomeSplashScreenState extends State<HomeSplashScreen> {
         // روی بشقاب قبلی (صفحه قبل) گذاشته میشه
         // pushReplacement ---> با این دستور بشقاب جدید جایگزین بشقاب قبلی میشه
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => HomePage()
+          builder: (context) => HomeMain()
         ));
       }
     });

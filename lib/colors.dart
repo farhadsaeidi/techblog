@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 class SolidColors {
-  static const Color primaryColor = Color.fromARGB(255, 68, 4, 87); 
+  static const Color primaryColor = Color.fromARGB(255, 77, 1, 55); 
   static const Color bannerTitle = Color.fromARGB(255, 255, 255, 255); 
   static const Color bannerSubTitle = Color.fromARGB(200, 255, 255, 255); 
   static const Color colorTitle = Color.fromARGB(255, 40, 107, 184); 
@@ -15,6 +15,8 @@ class SolidColors {
   static const Color submitArticle = Color.fromARGB(255, 209, 209, 209); 
   static const Color submitPodCast = Color.fromARGB(255, 246, 246, 246); 
   static const Color subText = Color.fromARGB(255, 197, 197, 197); 
+  static const Color divider = Color.fromARGB(255, 215, 215, 215); 
+  static const Color backgroundEffectColor = Color.fromARGB(255, 105, 6, 109); 
 }
 
 class GradiantColors {

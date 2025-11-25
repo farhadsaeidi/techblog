@@ -53,15 +53,14 @@ class MyApp extends StatelessWidget {
           // ),
           titleMedium: TextStyle(
             fontSize: 14,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w600,
             color: SolidColors.colorTitle,
           ),
-          // titleLarge: TextStyle(
-          //   fontFamily: 'DANA',
-          //   fontSize: 14,
-          //   fontWeight: FontWeight.w600,
-          //   color: Colors.white,
-          // ),
+          titleLarge: TextStyle(
+            fontSize: 17,
+            fontWeight: FontWeight.w700,
+            color: SolidColors.primaryColor,
+          ),
           // bodyLarge: TextStyle(
           //   fontSize: 13,
           //   fontWeight: FontWeight.w400,
@@ -82,11 +81,11 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.w500,
             color: Colors.black,
           ),
-          // labelLarge: TextStyle(
-          //   fontSize: 13,
-          //   fontWeight: FontWeight.w500,
-          //   color: Colors.red,
-          // ),
+          labelLarge: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+            color: Colors.black,
+          ),
         ),
       ),
       // تنظیمات راست چین کردن پروژه

@@ -1,74 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:tech_blog/colors.dart';
+import 'package:tech_blog/component.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/model/fake_data.dart';
 import 'package:tech_blog/strings.dart';
 
-homeScreen(
-  Size screenSize,
-  TextTheme textTheme,
-  int hottestPostsNumber,
-  int hottestPodcastsNumber,
-) {
-  // برای اینکه محتویات بادی اسکرول بخورن
-  return SingleChildScrollView(
-    // افکت اسکرول (مثل گوشی آیفون)
-    physics: BouncingScrollPhysics(),
-    child: SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-        child: Column(
-          children: [
-            // بنر
-            homeScreenBanner(screenSize, textTheme),
-            SizedBox(height: 16),
-            // هشتگ ها
-            homeScreenHashTags(textTheme),
-            SizedBox(height: 35),
-            // عنوان داغ ترین نوشته ها
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 20, 16),
-              child: Row(
+class HomeScreen extends StatelessWidget {
+  final int hottestPostsNumber;
+  final int hottestPodcastsNumber;
+
+  const HomeScreen({
+    super.key,
+    required this.hottestPostsNumber,
+    required this.hottestPodcastsNumber,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+    final textTheme = Theme.of(context).textTheme;
+
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(0),
+          child: Column(
+            children: [
+              // بنر
+              homeScreenBanner(screenSize, textTheme),
+              const SizedBox(height: 16),
+              // هشتگ ها
+              homeScreenHashTags(textTheme),
+              const SizedBox(height: 40),
+              // عنوان داغ ترین نوشته ها
+              SectionHeader(
+                text: Strings.viewHottestPosts,
+                icon: Assets.icons.bluePen.provider(),
+                textTheme: textTheme,
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  ImageIcon(
-                    Assets.icons.bluePen.provider(),
-                    color: SolidColors.colorTitle,
-                  ),
-                  SizedBox(width: 8),
-                  Text(Strings.viewHottestPosts, style: textTheme.titleMedium),
-                ],
               ),
-            ),
-            // محتوای داغ ترین نوشته ها
-            homeScreenHottestPosts(screenSize, hottestPostsNumber, textTheme),
-            SizedBox(height: 35),
-            // عنوان داغ ترین پادکست ها
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 20, 16),
-              child: Row(
+              const SizedBox(height: 16),
+              // محتوای داغ ترین نوشته ها
+              homeScreenHottestPosts(screenSize, hottestPostsNumber, textTheme),
+              const SizedBox(height: 27),
+              // عنوان داغ ترین پادکست ها
+              SectionHeader(
+                text: Strings.viewHottestPodCasts,
+                icon: Assets.icons.microphon.provider(),
+                textTheme: textTheme,
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  ImageIcon(
-                    Assets.icons.microphon.provider(),
-                    color: SolidColors.colorTitle,
-                  ),
-                  SizedBox(width: 8),
-                  Text(
-                    Strings.viewHottestPodCasts,
-                    style: textTheme.titleMedium,
-                  ),
-                ],
               ),
-            ),
-            // محتوای داغ ترین پادکست ها
-            homeScreenHottestPoscasts(screenSize, hottestPodcastsNumber, textTheme),
-            SizedBox(height: 30)
-          ],
+              const SizedBox(height: 16),
+              // محتوای داغ ترین پادکست ها
+              homeScreenHottestPoscasts(
+                screenSize,
+                hottestPodcastsNumber,
+                textTheme,
+              ),
+              const SizedBox(height: 30),
+            ],
+          ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 homeScreenBanner(Size screenSize, TextTheme textTheme) {
@@ -171,7 +167,7 @@ homeScreenHashTags(TextTheme textTheme) {
   );
 }
 
-homeScreenHottestPosts(Size screenSize, int hottestPostsNumber, TextTheme textTheme) {
+homeScreenHottestPosts(Size screenSize,int hottestPostsNumber,TextTheme textTheme) {
   return SizedBox(
     height: screenSize.height / 4.1,
     child: ListView.builder(
@@ -190,7 +186,7 @@ homeScreenHottestPosts(Size screenSize, int hottestPostsNumber, TextTheme textTh
   );
 }
 
-homeScreenHottestPoscasts(Size screenSize, int hottestPodcastsNumber, TextTheme textTheme) {
+homeScreenHottestPoscasts(Size screenSize,int hottestPodcastsNumber,TextTheme textTheme) {
   return SizedBox(
     height: screenSize.height / 4.1,
     child: ListView.builder(
@@ -210,176 +206,176 @@ homeScreenHottestPoscasts(Size screenSize, int hottestPodcastsNumber, TextTheme 
 }
 
 hashTagItem(index, textTheme) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(
-        index == hashTagList.length - 1 ? 20 : 8,
-        0,
-        index == 0 ? 20 : 8,
-        0,
-      ),
-      child: Container(
-        height: 40,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-          gradient: LinearGradient(
-            colors: GradiantColors.tags,
-            begin: Alignment.centerRight,
-            end: Alignment.centerLeft,
-          ),
+  return Padding(
+    padding: EdgeInsets.fromLTRB(
+      index == hashTagList.length - 1 ? 20 : 8,
+      0,
+      index == 0 ? 20 : 8,
+      0,
+    ),
+    child: Container(
+      height: 40,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        gradient: LinearGradient(
+          colors: GradiantColors.tags,
+          begin: Alignment.centerRight,
+          end: Alignment.centerLeft,
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Row(
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Row(
+          children: [
+            ImageIcon(
+              Assets.icons.hashtagicon.provider(),
+              color: SolidColors.lightText,
+              size: 15,
+            ),
+            SizedBox(width: 10),
+            Text(hashTagList[index].title, style: textTheme.displaySmall),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+hottestPostsItem(index, textTheme, screenSize, hottestPostsNumber) {
+  return Padding(
+    padding: EdgeInsets.fromLTRB(
+      index == hottestPostsNumber - 1 ? 20 : 12,
+      0,
+      index == 0 ? 20 : 12,
+      0,
+    ),
+    child: Column(
+      children: [
+        // عکس، کاور و متن روی عکس
+        SizedBox(
+          width: screenSize.width / 2,
+          height: screenSize.height / 5.4,
+          child: Stack(
             children: [
-              ImageIcon(
-                Assets.icons.hashtagicon.provider(),
-                color: SolidColors.lightText,
-                size: 15,
+              // عکس و کاور روی عکس
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(16)),
+                  // در صورتی که بخوایم عکس از اینترنت بخونه
+                  // image: DecorationImage(
+                  //   image: NetworkImage(hottestPostsList[index].imageUrl),
+                  //   fit: BoxFit.cover,
+                  // ),
+                  // در صورتی که بخوایم عکس از فایل استاتیک بخونه
+                  image: DecorationImage(
+                    image: AssetImage(
+                      hottestPostsStaticImageList[index].imagePath,
+                    ),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                // کاور روی عکس
+                foregroundDecoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(16)),
+                  gradient: LinearGradient(
+                    colors: GradiantColors.homeHottestPostsCover,
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                  ),
+                ),
               ),
-              SizedBox(width: 10),
-              Text(hashTagList[index].title, style: textTheme.displaySmall),
+              // متن روی عکس
+              Positioned(
+                bottom: 15,
+                left: 0,
+                right: 0,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        hottestPostsList[index].writer,
+                        style: textTheme.headlineSmall,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            hottestPostsList[index].view,
+                            style: textTheme.headlineSmall,
+                          ),
+                          SizedBox(width: 5),
+                          Icon(
+                            Icons.remove_red_eye_sharp,
+                            color: SolidColors.bannerSubTitle,
+                            size: 17,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-hottestPostsItem(index, textTheme, screenSize, hottestPostsNumber) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(
-        index == hottestPostsNumber - 1 ? 20 : 12,
-        0,
-        index == 0 ? 20 : 12,
-        0,
-      ),
-      child: Column(
-        children: [
-          // عکس، کاور و متن روی عکس
-          SizedBox(
-            width: screenSize.width / 2,
-            height: screenSize.height / 5.4,
-            child: Stack(
-              children: [
-                // عکس و کاور روی عکس
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
-                    // در صورتی که بخوایم عکس از اینترنت بخونه
-                    // image: DecorationImage(
-                    //   image: NetworkImage(hottestPostsList[index].imageUrl),
-                    //   fit: BoxFit.cover,
-                    // ),
-                    // در صورتی که بخوایم عکس از فایل استاتیک بخونه
-                    image: DecorationImage(
-                      image: AssetImage(
-                        hottestPostsStaticImageList[index].imagePath,
-                      ),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  // کاور روی عکس
-                  foregroundDecoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
-                    gradient: LinearGradient(
-                      colors: GradiantColors.homeHottestPostsCover,
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                    ),
-                  ),
-                ),
-                // متن روی عکس
-                Positioned(
-                  bottom: 15,
-                  left: 0,
-                  right: 0,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          hottestPostsList[index].writer,
-                          style: textTheme.headlineSmall,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              hottestPostsList[index].view,
-                              style: textTheme.headlineSmall,
-                            ),
-                            SizedBox(width: 5),
-                            Icon(
-                              Icons.remove_red_eye_sharp,
-                              color: SolidColors.bannerSubTitle,
-                              size: 17,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+        SizedBox(height: 6),
+        // متن زیر عکس
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 4),
+          width: screenSize.width / 2,
+          child: Text(
+            hottestPostsList[index].title,
+            style: textTheme.labelMedium,
+            textAlign: TextAlign.justify,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
-          SizedBox(height: 6),
-          // متن زیر عکس
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 4),
-            width: screenSize.width / 2,
-            child: Text(
-              hottestPostsList[index].title,
-              style: textTheme.labelMedium,
-              textAlign: TextAlign.justify,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
 
 hottestPoscastsItem(index, textTheme, screenSize, hottestPodcastsNumber) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(
-        index == hottestPodcastsNumber - 1 ? 20 : 12,
-        0,
-        index == 0 ? 20 : 12,
-        0,
-      ),
-      child: Column(
-        children: [
-          // عکس
-          SizedBox(
-            width: screenSize.width / 2.5,
-            height: screenSize.height / 7,
-            child: Stack(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
-                    image: DecorationImage(
-                      image: AssetImage(hottestPodcastList[index].imagePath),
-                      fit: BoxFit.cover,
-                    ),
+  return Padding(
+    padding: EdgeInsets.fromLTRB(
+      index == hottestPodcastsNumber - 1 ? 20 : 12,
+      0,
+      index == 0 ? 20 : 12,
+      0,
+    ),
+    child: Column(
+      children: [
+        // عکس
+        SizedBox(
+          width: screenSize.width / 2.5,
+          height: screenSize.height / 7,
+          child: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(16)),
+                  image: DecorationImage(
+                    image: AssetImage(hottestPodcastList[index].imagePath),
+                    fit: BoxFit.cover,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          SizedBox(height: 6),
-          // عنوان زیر عکس
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 6),
-            child: Text(
-              hottestPodcastList[index].title,
-              style: textTheme.labelMedium,
-              textAlign: TextAlign.center,
-            ),
+        ),
+        SizedBox(height: 6),
+        // عنوان زیر عکس
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 6),
+          child: Text(
+            hottestPodcastList[index].title,
+            style: textTheme.labelMedium,
+            textAlign: TextAlign.center,
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
